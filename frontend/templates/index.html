@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GardenApp 🌱</title>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────── -->
+<nav class="navbar" id="navbar">
+  <div class="nav-brand">🌿 GardenApp</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#" onclick="showPage('plants')">Plants</a></li>
+    <li><a href="#" onclick="showPage('plots')">My Garden</a></li>
+    <li><a href="#" onclick="showPage('tasks')">Tasks</a></li>
+    <li id="authBtn"></li>
+  </ul>
+</nav>
+
+<!-- ── HERO (guests only) ──────────────────────────────── -->
+<section class="hero" id="heroSection">
+  <div class="hero-content">
+    <h1>Grow Your Dream Garden 🌻</h1>
+    <p>Plan, track, and nurture your plants — all in one place.</p>
+    <button class="btn btn-primary" onclick="openModal('register')">Get Started Free</button>
+    <button class="btn btn-outline" onclick="openModal('login')">Sign In</button>
+  </div>
+</section>
+
+<!-- ── PAGES ───────────────────────────────────────────── -->
+<main class="container" id="mainContent" style="display:none">
+
+  <!-- Plants Page -->
+  <section id="plantsPage" class="page">
+    <div class="page-header">
+      <h2>🌸 Plant Catalogue</h2>
+      <div class="filter-group">
+        <button class="chip active" onclick="filterPlants('')">All</button>
+        <button class="chip" onclick="filterPlants('Flower')">Flowers</button>
+        <button class="chip" onclick="filterPlants('Vegetable')">Vegetables</button>
+        <button class="chip" onclick="filterPlants('Herb')">Herbs</button>
+      </div>
+    </div>
+    <div class="card-grid" id="plantsGrid"></div>
+  </section>
+
+  <!-- Plots Page -->
+  <section id="plotsPage" class="page" style="display:none">
+    <div class="page-header">
+      <h2>🏡 My Garden Plots</h2>
+      <button class="btn btn-primary" onclick="openModal('addPlot')">+ New Plot</button>
+    </div>
+    <div class="card-grid" id="plotsGrid"></div>
+  </section>
+
+  <!-- Tasks Page -->
+  <section id="tasksPage" class="page" style="display:none">
+    <div class="page-header">
+      <h2>✅ Care Tasks</h2>
+      <button class="btn btn-primary" onclick="openModal('addTask')">+ New Task</button>
+    </div>
+    <div id="tasksList"></div>
+  </section>
+
+</main>
+
+<!-- ── MODALS ──────────────────────────────────────────── -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ── TOAST ───────────────────────────────────────────── -->
+<div id="toast" class="toast"></div>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>
